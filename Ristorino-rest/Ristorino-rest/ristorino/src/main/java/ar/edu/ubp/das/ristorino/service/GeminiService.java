@@ -20,7 +20,7 @@ public class GeminiService {
 
     @Autowired
     private RistorinoRepository ristorinoRepository;
-    private static final String API_KEY = "AIzaSyCigsSxPrvted2W88CX4Vvqc3MG2fO6Hjg";
+    private static final String API_KEY = "";
     private static final String GEMINI_URL =
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY;
 
