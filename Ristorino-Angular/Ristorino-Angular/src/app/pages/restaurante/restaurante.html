@@ -1,0 +1,162 @@
+@if (restaurante; as r) {
+<div class="resto-container">
+
+  <header class="resto-header">
+    <div class="brand-logo">
+      {{ (r.razonSocial || 'R').charAt(0) }}
+    </div>
+
+    <h1
+      class="brand-title clickable-title"
+      [routerLink]="['/main/restaurante', r.nroRestaurante]">
+      {{ r.razonSocial }}
+    </h1>
+  </header>
+
+  @if (r.sucursales.length) {
+    @for (s of sucursalesFiltradas; track s.codSucursalRestaurante) {
+
+      <article class="sucursal-card">
+
+        <div class="card-header">
+          <h3>{{ s.nomSucursal }}</h3>
+          <span class="sucursal-badge">
+            <span i18n="@@sucursalBadgePrefix">Sucursal #</span>{{ s.codSucursalRestaurante }}
+          </span>
+        </div>
+
+        <div class="info-row">
+          <span>
+            📍 {{ s.calle }} {{ s.nroCalle }}, {{ s.nomLocalidad }}
+          </span>
+          <span>
+            @if (!s.telefonos) {
+               <span i18n="@@telefonoNoDisponible">No disponible</span>
+             } @else {
+               {{ s.telefonos }}
+             }
+          </span>
+        </div>
+
+        @if (s.minTolerenciaReserva) {
+          <div class="info-row">
+            <span i18n="@@confirmacionMinimaLabel">⏱️ Confirmación mínima:</span>
+            <strong i18n="@@minutosAntesSuffix">{{ s.minTolerenciaReserva }} minutos antes</strong>
+          </div>
+        }
+
+        @if (s.zonas && s.zonas.length) {
+          <div class="zonas-section">
+            <span class="label" i18n="@@ambientesDisponiblesLabel">Ambientes disponibles</span>
+
+            <div class="tags-container">
+              @for (z of s.zonas; track z.codZona) {
+                <span
+                  class="tag tag-zona"
+                  [class.disabled]="!z.habilitada">
+                  {{ z.nomZona }}
+                  <small>({{ z.cantComensales }} <span i18n="@@abreviaturaMax">máx</span>)</small>
+                </span>
+              }
+            </div>
+          </div>
+        }
+
+        @if (s.preferencias.length) {
+          <div class="preferencias-section">
+
+            @for (cat of getPreferenciasPorCategoria(s) | keyvalue; track cat.key) {
+
+              <div class="pref-group">
+                <span class="pref-title">{{ cat.key }}</span>
+
+                <div class="tags-container">
+                  @for (p of cat.value; track p.nroPreferencia) {
+                    <span class="tag tag-soft">
+                      {{ p.nomValorDominio }}
+                    </span>
+                  }
+                </div>
+              </div>
+
+            }
+
+          </div>
+        }
+
+          <div class="promos-title mt-5">
+          <span class="line"></span>
+          <h4 i18n="@@promocionesDisponiblesTitulo">Promociones disponibles</h4>
+          <span class="line"></span>
+        </div>
+
+        @if (s.promociones?.length) {
+          <div
+            id="promoSucursal{{ s.nroSucursal }}"
+            class="carousel slide mt-3"
+            data-bs-ride="carousel">
+
+            <div class="carousel-inner rounded-3 shadow">
+
+              @for (promo of s.promociones; track promo.nroContenido) {
+                <div
+                  class="carousel-item"
+                  [class.active]="$index === 0">
+
+                  <img
+                    [src]="promo.imagenPromocional"
+                    class="d-block w-100"
+                  />
+
+                  <div class="carousel-caption promo-caption">
+                    {{ promo.contenidoPromocional }}
+                  </div>
+
+                </div>
+              }
+
+            </div>
+
+            <button
+              class="carousel-control-prev"
+              type="button"
+              [attr.data-bs-target]="'#promoSucursal' + s.nroSucursal"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button
+              class="carousel-control-next"
+              type="button"
+              [attr.data-bs-target]="'#promoSucursal' + s.nroSucursal"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+
+          </div>
+        }
+
+        
+
+        <div class="card-actions">
+          <button
+            class="btn-reservar" (click)="irAReserva(s)"
+            i18n="@@btnHacerReserva">
+            Hacer una Reserva ➜
+          </button>
+        </div>
+        
+
+
+      </article>
+    }
+  } @else {
+    <div class="empty">
+      <p i18n="@@noSucursalesMsg">No hay sucursales disponibles por el momento.</p>
+    </div>
+  }
+
+</div>
+} @else {
+  <div class="loading" i18n="@@cargandoRestauranteMsg">Cargando restaurante...</div>
+}

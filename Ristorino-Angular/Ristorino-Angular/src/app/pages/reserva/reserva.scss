@@ -1,0 +1,157 @@
+@use "sass:color";
+
+// --- VARIABLES ---
+$primary: #a14a24;
+$primary-light: #d66a3d;
+$accent: #e0a816;
+$success: #2e7d32;
+$bg-page: #f6f1ea;
+$surface: #ffffff;
+$text-main: #2a2a2a;
+$text-muted: #666666;
+
+:host {
+  display: flex; 
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  
+  // Fondo unificado
+  background-color: $bg-page;
+  background-image: radial-gradient(circle at 50% 0%, rgba($primary, 0.05) 0%, transparent 50%);
+  
+  font-family: 'Roboto', sans-serif;
+  justify-content: center; 
+  align-items: center; 
+  padding: 20px;
+}
+
+.reserva-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.reserva-card {
+  border-radius: 24px;
+  padding: 20px;
+  background: $surface;
+  
+  // Sombra unificada
+  box-shadow: 0 20px 60px rgba(161, 74, 36, 0.12) !important;
+  border: 1px solid rgba($primary, 0.08);
+  overflow: visible; // Importante para sombras
+}
+
+// --- HEADER ---
+.card-header-custom {
+  text-align: center;
+  padding: 15px 0 20px;
+  border-bottom: 1px dashed rgba($primary, 0.2);
+  margin-bottom: 25px;
+
+  h2 {
+    color: $primary;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .muted {
+    color: $text-muted;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    strong { color: $text-main; font-size: 1.1rem; }
+  }
+}
+
+// --- FORM ---
+.form-row {
+  display: flex; gap: 15px; margin-bottom: 5px;
+  @media (max-width: 550px) { flex-direction: column; gap: 0; }
+}
+
+.half-width { flex: 1; width: 100%; }
+
+.search-action { margin-top: 15px; }
+
+.btn-search {
+  width: 100%; height: 54px;
+  border-radius: 12px;
+  font-size: 1rem; font-weight: 600; letter-spacing: 1px;
+  
+  // Gradiente unificado
+  background: linear-gradient(135deg, $primary-light, $primary) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba($primary, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover:not([disabled]) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba($primary, 0.4);
+  }
+  &:disabled { opacity: 0.7; }
+}
+
+// --- GRID ---
+.grid-container {
+  margin-top: 30px; padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  animation: slideDown 0.4s ease-out;
+}
+
+.grid-title {
+  text-align: center; font-size: 1rem; color: $text-muted; margin-bottom: 15px; font-weight: 500;
+}
+
+.horarios-grid {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+}
+
+.hora-chip {
+  background: white; border: 1px solid rgba($primary, 0.4); color: $primary;
+  padding: 10px 20px; border-radius: 30px; font-size: 1rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover { background-color: rgba($primary, 0.05); transform: scale(1.05); }
+
+  &.selected {
+    background: linear-gradient(135deg, $primary, $primary-light);
+    color: white; border-color: transparent;
+    box-shadow: 0 4px 10px rgba($primary, 0.3); transform: scale(1.1);
+  }
+}
+
+// --- FOOTER ---
+.card-footer-custom {
+  margin-top: 30px; background-color: #fffcf8;
+  border: 1px solid rgba($accent, 0.2); border-radius: 16px; padding: 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.resumen-box {
+  margin-bottom: 20px;
+  h4 {
+    color: $primary; margin: 0 0 15px 0; font-size: 1.1rem; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+    mat-icon { font-size: 1.2rem; height: 1.2rem; width: 1.2rem; }
+  }
+  .resumen-details {
+    display: flex; flex-direction: column; gap: 8px;
+    background: rgba($accent, 0.08); padding: 15px;
+    border-radius: 10px; border-left: 4px solid $accent;
+    span { font-size: 0.95rem; color: $text-main; font-weight: 500; }
+  }
+}
+
+.btn-confirm {
+  width: 100%; height: 56px;
+  background: linear-gradient(135deg, $success, lighten($success, 10%)) !important;
+  color: white !important; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px;
+  border-radius: 12px; box-shadow: 0 4px 15px rgba($success, 0.3);
+  transition: transform 0.2s;
+  &:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba($success, 0.4); }
+}
+
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }

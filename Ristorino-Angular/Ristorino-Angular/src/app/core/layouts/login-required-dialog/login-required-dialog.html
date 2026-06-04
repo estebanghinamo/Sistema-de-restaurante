@@ -1,0 +1,15 @@
+<h2 mat-dialog-title i18n="@@login-required-dialog-loginrequired">🔐 Iniciar sesión requerida</h2>
+
+<mat-dialog-content>
+  <p i18n="@@login-required-dialog-message">
+    Para poder confirmar una reserva es necesario
+    <strong>iniciar sesión</strong>.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button i18n="@@login-required-dialog-cancel" (click)="cerrar()">Cancelar</button>
+  <button mat-flat-button color="primary" i18n="@@login-required-dialog-login" (click)="irLogin()">
+    Iniciar sesión
+  </button>
+</mat-dialog-actions>

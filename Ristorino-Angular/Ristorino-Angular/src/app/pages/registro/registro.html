@@ -1,0 +1,172 @@
+<div class="auth-wrapper">
+  <div class="auth-card auth-card-large">
+
+    <h2 class="auth-title" i18n="@@registroTitulo">Crear cuenta</h2>
+    <p class="auth-subtitle" i18n="@@registroSubtitulo">Sumate a Ristorino</p>
+
+    <form (ngSubmit)="registrar()" #f="ngForm">
+
+      <!-- Nombre / Apellido -->
+      <div class="grid-2">
+        <input
+          type="text"
+          name="apellido"
+          [(ngModel)]="apellido"
+          placeholder="Apellido"
+          i18n-placeholder="@@placeholderApellido"
+          required
+        />
+
+        <input
+          type="text"
+          name="nombre"
+          [(ngModel)]="nombre"
+          placeholder="Nombre"
+          i18n-placeholder="@@placeholderNombre"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <input
+        type="email"
+        name="correo"
+        [(ngModel)]="correo"
+        placeholder="Correo electrónico"
+        i18n-placeholder="@@placeholderEmail"
+        required
+      />
+
+      <!-- Clave -->
+      <input
+        type="password"
+        name="clave"
+        [(ngModel)]="clave"
+        placeholder="Contraseña"
+        i18n-placeholder="@@placeholderClave"
+        required
+      />
+
+      <!-- Teléfono -->
+      <input
+        type="text"
+        name="telefonos"
+        [(ngModel)]="telefonos"
+        placeholder="Teléfono"
+        i18n-placeholder="@@placeholderTelefono"
+        required
+      />
+
+      <!-- Localidad / Provincia -->
+      <div class="grid-2">
+        <input
+          type="text"
+          name="nomLocalidad"
+          [(ngModel)]="nomLocalidad"
+          placeholder="Localidad"
+          i18n-placeholder="@@placeholderLocalidad"
+          required
+        />
+
+        <input
+          type="text"
+          name="nomProvincia"
+          [(ngModel)]="nomProvincia"
+          placeholder="Provincia"
+          i18n-placeholder="@@placeholderProvincia"
+          required
+        />
+      </div>
+
+      <!-- =========================
+           PREFERENCIAS (MULTIPLE)
+           ========================= -->
+
+<div class="preferencias-box">
+
+  <h4 class="preferencias-title" i18n="@@tituloPreferencias">
+    Preferencias gastronómicas
+  </h4>
+
+  @for (cat of categorias; track cat.codCategoria) {
+
+    <!-- CARD DE CATEGORÍA -->
+    <div
+      class="categoria-card"
+      [class.active]="categoriasSeleccionadas.includes(cat.codCategoria)"
+      (click)="toggleCategoria(cat.codCategoria)"
+    >
+
+      <div class="categoria-header">
+        <span class="categoria-nombre">
+          {{ cat.nomCategoria }}
+        </span>
+      </div>
+
+      @if (categoriasSeleccionadas.includes(cat.codCategoria)) {
+
+        <!-- CHIPS -->
+        <div class="chips-container" (click)="$event.stopPropagation()">
+          @for (dom of cat.dominios; track dom.nroValorDominio) {
+            <button
+              type="button"
+              class="chip"
+              [class.selected]="isDominioSeleccionado(cat.codCategoria, dom.nroValorDominio)"
+              (click)="toggleDominio(cat.codCategoria, dom.nroValorDominio)"
+            >
+              {{ dom.nomValorDominio }}
+            </button>
+          }
+        </div>
+
+      }
+
+    </div>
+  }
+
+</div>
+
+
+
+      <!-- Observaciones -->
+      <input
+        type="text"
+        name="observaciones"
+        [(ngModel)]="observaciones"
+        placeholder="Observaciones"
+        i18n-placeholder="@@placeholderObservaciones"
+        maxlength="500"
+        required
+      />
+
+      <!-- Botón -->
+      <button type="submit" [disabled]="f.invalid" i18n="@@btnRegistrarse">
+        Registrarse
+      </button>
+
+      <!-- Mensajes -->
+      @if (mensaje) {
+        <p class="success-msg">{{ mensaje }}</p>
+      }
+
+      @if (error) {
+        <p class="error-msg">{{ error }}</p>
+      }
+
+    </form>
+
+    <!-- Footer -->
+    <div class="auth-footer">
+      <a routerLink="/login" i18n="@@linkIniciarSesion">
+        Iniciar Sesión
+      </a>
+    </div>
+
+    <div class="auth-footer">
+      <a routerLink="/main">
+        <h3>🏠</h3>
+      </a>
+    </div>
+
+  </div>
+</div>

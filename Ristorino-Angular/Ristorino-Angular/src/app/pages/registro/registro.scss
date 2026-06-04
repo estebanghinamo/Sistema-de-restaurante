@@ -1,0 +1,247 @@
+@use "sass:color";
+
+// --- VARIABLES ---
+$bg-page: #f6f1ea;
+$primary: #a14a24;
+$primary-light: #d9480f; 
+$surface: #ffffff;
+$text-main: #2a2a2a;
+$text-muted: #666;
+
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+}
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  
+  background-color: $bg-page;
+  background-image: 
+    radial-gradient(circle at 50% 10%, rgba($primary, 0.05) 0%, transparent 40%),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba($primary, 0.03) 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 560px; // Un poco más ancha para el registro
+  background: $surface;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  
+  box-shadow: 0 20px 60px rgba(161, 74, 36, 0.12);
+  border: 1px solid rgba($primary, 0.1);
+  
+  animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: $primary;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: $text-muted;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+input, select {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  color: $text-main;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+
+  &::placeholder { color: #aaa; }
+
+  &:focus {
+    border-color: $primary;
+    background: #fffcfb;
+    box-shadow: 0 0 0 4px rgba($primary, 0.1);
+  }
+}
+
+// Ajuste para el select custom
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a14a24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 14px;
+  
+  background: linear-gradient(135deg, $primary-light, $primary);
+  border: none;
+  color: #fff;
+  
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  
+  box-shadow: 0 10px 20px rgba($primary, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba($primary, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #ccc;
+    box-shadow: none;
+  }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  
+  @media(max-width: 500px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: $text-muted;
+
+  a {
+    color: $primary;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 5px;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.error-msg { color: #d32f2f; text-align: center; margin-top: 10px; font-size: 0.9rem;}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   PREFERENCIAS
+   ========================= */
+
+.preferencias-box {
+  margin-top: 24px;
+}
+
+.preferencias-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #a14a24;
+  margin-bottom: 16px;
+}
+
+/* Card por categoría */
+.categoria-card {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.categoria-card.active {
+  border-color: #e67328;
+  box-shadow: 0 6px 18px rgba(230, 115, 40, .18);
+}
+
+.categoria-card:hover {
+  border-color: #e67328;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+/* Header */
+.categoria-header {
+  display: flex;
+  justify-content: center;
+}
+
+.categoria-nombre {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #e67328;
+  letter-spacing: .06em;
+}
+
+.categoria-header input {
+  transform: scale(1.2);
+}
+
+
+
+/* Chips */
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.chip {
+  background: #fde8dc;
+  color: #8a3c12;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.chip:hover {
+  background: #f4c8ae;
+}
+
+/* CHIP SELECCIONADO */
+.chip.selected {
+  background: linear-gradient(135deg, #e67328, #b34700);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(179, 71, 0, 0.35);
+}
+
+.chip.selected::before {
+  content: "✓";
+  margin-right: 6px;
+}

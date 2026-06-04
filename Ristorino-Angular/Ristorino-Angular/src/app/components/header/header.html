@@ -1,0 +1,43 @@
+<header class="app-header">
+  <div class="logo" routerLink="/main">
+    <img src="/img/Logo_ristorino2.png" alt="Ristorino" height="40" />
+    <span class="title">Ristorino</span>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/main" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" i18n>Inicio</a>
+
+
+    @if (isLoggedIn$ | async) {
+      
+      <a routerLink="/main/misReservas" routerLinkActive="active">
+        <mat-icon>history</mat-icon>
+        <span i18n>Mis Reservas</span>
+      </a>
+
+      <a (click)="logout()" class="logout-btn" style="cursor:pointer">
+        <mat-icon>logout</mat-icon>
+        <span i18n>Cerrar sesión</span>
+      </a>
+
+    } @else {
+      
+      <a routerLink="/login" routerLinkActive="active">
+        <mat-icon>login</mat-icon>
+        <span i18n>Iniciar sesión</span>
+      </a>
+
+    }
+  </nav>
+  <div class="language-switcher">
+  @if (getpuerto() === '4201') {
+  <button mat-button (click)="cambiarIdiomaDev('es')">
+    ES 
+  </button>
+  }@else {
+  <button mat-button (click)="cambiarIdiomaDev('en')">
+    EN 
+  </button>
+  }
+ </div>
+</header>

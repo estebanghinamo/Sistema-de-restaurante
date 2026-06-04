@@ -1,0 +1,15 @@
+.dialog-content { display: flex; flex-direction: column; gap: 1rem; min-width: 320px; }
+    .form-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .search-action { display: flex; justify-content: flex-end; }
+    .grid-container { margin-top: 12px; }
+    .grid-title { margin: 0 0 8px; font-weight: 700; }
+    .horarios-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hora-chip {
+      border: 1px solid rgba(0,0,0,.2);
+      background: white;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .hora-chip.selected { border-color: #a14a24; font-weight: 700; }
+    .error-msg { color: #b00020; margin-top: 8px; }

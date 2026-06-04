@@ -1,0 +1,27 @@
+para la carpeta node_module : npm install --legacy-peer-deps
+page	ng g c pages/registro --standalone --skip-tests
+api/models: ng generate interface api/models/i-cliente.model
+resolver: ng generate resolver resolvers/recomendacionesIA-resolver --skip-tests
+resouces:ng generate service api/resources/recomendacionIA.resource --skip-tests
+core:ng generate component core/layouts/login-required-dialog --standalone --skip-tests
+
+
+git status
+git stash -u
+git pull
+git stash pop
+# (si hay conflictos)
+git add .
+git commit -m "Resolve conflicts"
+git add .
+git commit -m "Mi trabajo"
+git push
+
+
+git restore .
+para descartar mis cambios en el local, luego hacer pull
+
+visualStudio
+control shift p
+shift alt f acomodar el alineado
+

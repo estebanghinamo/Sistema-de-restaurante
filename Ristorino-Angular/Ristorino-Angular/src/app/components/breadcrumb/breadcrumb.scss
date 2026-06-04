@@ -1,0 +1,58 @@
+.breadcrumb-container {
+  background-color: transparent; 
+  color: #6d6652; 
+  padding: 10px 2rem;
+  font-size: 0.9rem;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: none; 
+}
+
+.breadcrumb-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+
+  /* Estilo de los links (Pasos anteriores) */
+  a {
+    color: #6d6652; 
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    opacity: 0.8; /* Un poco transparente para que no compita con el activo */
+
+    &:hover {
+      /* Al pasar el mouse, se vuelve más oscuro y totalmente visible */
+      color: #4a4536; 
+      opacity: 1;
+      text-decoration: underline;
+      /* Quitamos el text-shadow blanco porque ya no se vería bien */
+    }
+  }
+
+  /* La flechita separadora */
+  .separator {
+    font-size: 1.1rem;
+    height: 1.1rem;
+    width: 1.1rem;
+    margin: 0 8px;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit; 
+  }
+
+  /* Estilo de la página actual (Texto final) */
+  &.active span {
+    color: #6d6652;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+}

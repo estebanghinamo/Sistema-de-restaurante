@@ -1,0 +1,328 @@
+package ar.edu.ubp.das.ristorino.resources;
+
+import ar.edu.ubp.das.ristorino.beans.*;
+import ar.edu.ubp.das.ristorino.repositories.RistorinoRepository;
+import ar.edu.ubp.das.ristorino.service.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+import com.google.gson.Gson;
+
+
+import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+
+import java.util.HashMap;
+import java.util.List;
+
+@RestController
+@RequestMapping("ristorino")
+public class RistorinoResource {
+    @Autowired
+    private RistorinoRepository ristorinoRepository;
+    @Autowired
+    private GeminiService geminiService;
+    @Autowired
+    private DisponibilidadService disponibilidadService;
+    @Autowired
+    private ReservaService reservaService;
+    @Autowired
+    private CancelarReservaService cancelarReserva;
+    @Autowired
+    private ModificarReservaService modificarReservaService;
+    @Autowired
+    private EvaluarReservaService evaluarReservaService;
+
+
+    private final Gson gson = new Gson();
+
+    @PostMapping("/registrarCliente")
+    public ResponseEntity<Map<String, String>> registrarCliente(@RequestBody ClienteBean clienteBean) {
+        String json = gson.toJson(clienteBean);
+        String mensaje = ristorinoRepository.registrarCliente(json);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(Map.of("mensaje", mensaje));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Map<String,String>> logueo(@RequestBody LoginBean loginBean) {
+        System.out.println("ENTRÓ AL LOGIN: " + loginBean.getCorreo());
+        try {
+            String token = ristorinoRepository.login(loginBean);
+            if (token != null) {
+                return ResponseEntity.ok(Map.of("token", token));
+            } else {
+                return ResponseEntity.status(401).body(Map.of("error", "error en email o contraseña"));
+            }
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/zonasSucursal")
+    public ResponseEntity<List<ZonaBean>> obtenerZonasSucursal(@RequestParam int nroRestaurante, @RequestParam int nroSucursal) {
+        List<ZonaBean> zonasSucursal = ristorinoRepository.getZonasSucursal(nroRestaurante,nroSucursal);
+        return ResponseEntity.ok(zonasSucursal);
+    }
+
+    @GetMapping ("/misReservas")
+    public ResponseEntity<ReservasClienteRespBean> obtenerReservasCliente(Authentication auth) {   String correo = auth.getName();
+        //System.out.println("correo: " + correo);
+        ReservasClienteRespBean res = ristorinoRepository.getReservasCliente(correo);
+        return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/cancelarReserva")
+    public ResponseEntity<Map<String, Object>> cancelarReserva(@RequestBody CancelarReservaBean req) {
+        return ResponseEntity.ok(cancelarReserva.cancelarReserva(req));
+    }
+
+    @PostMapping("/modificarReserva")
+    public ResponseEntity<Map<String, Object>> modificarReserva(@RequestBody ModificarReservaReqBean reserva) {
+
+        Map<String, Object> resp = modificarReservaService.modificarReserva(reserva);
+
+        boolean ok = Boolean.TRUE.equals(resp.get("success"));
+        return ok ? ResponseEntity.ok(resp) : ResponseEntity.badRequest().body(resp);
+    }
+
+    /*
+    * Consume el servicio del restaurante y registra una reserva
+    * recive un reservaBean y si todo sale bien obtiene un codigo de reserva por parte del restuarnte
+    * */
+    @PostMapping("/registrarReserva")
+    public ResponseEntity<Map<String, Object>> registrarReserva(@RequestBody ReservaBean reserva) {
+
+        Map<String, Object> response =
+                reservaService.registrarReserva(reserva);
+        return ResponseEntity.ok(response);
+    }
+
+
+
+    @PostMapping("/consultarDisponibilidad")
+    public ResponseEntity<DispoRespBean> consultarDisponibilidad(@RequestBody SoliHorarioBean soliHorarioBean) {
+        String tipoCosto = "RESERVA";
+        BigDecimal costo = ristorinoRepository.obtenerCostoVigente(tipoCosto,soliHorarioBean.getFecha());
+        DispoRespBean dispoRespBean = new DispoRespBean();
+        dispoRespBean.setHorarios(disponibilidadService.obtenerDisponibilidad(soliHorarioBean));
+        dispoRespBean.setCosto(costo);
+        return ResponseEntity.ok(dispoRespBean);
+    }
+
+    /*
+    * A partir de un texto de busqueda, la IA genera filtros que son usados en la BD para obtener una lista de restaurantes
+    *  que coincidan con el texto de busqueda.
+    * Devuelve una lista de restaurantes.
+    * */
+    @PostMapping("/ia/recomendaciones")
+    public ResponseEntity<?> procesarTexto(@RequestBody Map<String, String> body) {
+        try {
+            String texto = body.get("texto");
+            String email = body.get("emailUsuario");
+
+            String preferenciasUsuario = null;
+
+
+            if (email != null && !email.isBlank()) {
+                preferenciasUsuario =
+                        ristorinoRepository.obtenerPreferenciasClienteJson(email);
+
+            }
+
+            FiltroRecomendacionBean filtros =
+                    geminiService.interpretarTexto(texto, preferenciasUsuario);
+            String json = gson.toJson(filtros);
+            List<Map<String, Object>> restaurantes =
+                    ristorinoRepository.obtenerRecomendaciones(json);
+
+            return ResponseEntity.ok(restaurantes);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", e.getMessage()));
+        }
+    }
+
+
+    /*
+    * Obtiene los contenidos pendientes, genera un texto promocional con la IA para cada uno, y lo registra en la BD.
+    * Devuelve la cantidad de contenidos generados.
+    * SOLO ES DE PRUEBA,
+    * */
+    @PostMapping("/ia/generarContenidosPromocionales")
+    public ResponseEntity<?> generarContenidosPromocionales() {
+        try {
+            Map<String, Object> resultado =
+                    geminiService.generarContenidosPromocionalesBatch();
+
+            return ResponseEntity.ok(resultado);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", e.getMessage()));
+        }
+    }
+
+
+    /*
+    * Obtiene el contenido promocional desde la BD de ristorino
+    * Se necesita antes haber registrado el contenido del restaurante en la BD de ristorino y haber generado a partir de este la promocion con IA
+    * recive idRestaurante e idSucural devuelve una lista de las promociones
+    * */
+    @GetMapping("/obtenerPromociones")
+    public ResponseEntity<List<PromocionBean>> obtenerPromociones(@RequestParam(required = false) String nroRestaurante, @RequestParam(required = false) Integer nroSucursal) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("nroRestaurante", nroRestaurante);
+        body.put("nroSucursal", nroSucursal);
+        body.put("idioma", LocaleContextHolder.getLocale().getLanguage());
+        String json = new Gson().toJson(body);
+        List<PromocionBean> resultado = ristorinoRepository.obtenerPromociones(json);
+        return ResponseEntity.ok(resultado);
+
+    }
+
+    @GetMapping("/listarRestaurantesHome")
+    public ResponseEntity<List<RestauranteHomeBean>> listarRestaurantesHome(
+            Authentication auth) {
+
+        String correo = null;
+        //System.out.println("Correo autenticado = " + correo);
+        if (auth != null && auth.getName() != null) {
+            correo = auth.getName();
+        }
+
+        List<RestauranteHomeBean> lista =
+                ristorinoRepository.listarRestaurantesHome(correo);
+
+        return ResponseEntity.ok(lista);
+    }
+
+
+    /*
+    * Obtiene desde la BD de ristorino toda la info, menos el contenido promocional, de un restaurante solicitado por id
+    * recive el numero de restaurante y devuelve un restauranteBean
+    * */
+    @GetMapping("/obtenerRestaurante/{nro}")
+    public ResponseEntity<RestauranteBean> obtenerRestaurante(@PathVariable String nro) throws JsonProcessingException {
+        RestauranteBean restauranteBean = ristorinoRepository.obtenerRestaurantePorId(nro);
+        System.out.println("restauranteBeannro = " + restauranteBean.getNroRestaurante());
+        return ResponseEntity.ok(restauranteBean);
+    }
+
+    /*
+    * Se registra el click de una promocion en la base de datos de ristorino
+    * Recive un clickBean y devuelve un json
+    * //Todavia no guarda el cliente del click
+    * */
+    @PostMapping("/registrarClickPromocion")
+    public ResponseEntity<Map<String, Object>> RegistrarClickPromocion(@RequestBody ClickBean clickBean) {
+        String json = gson.toJson(clickBean);
+        Map<String, Object> body = ristorinoRepository.registrarClick(json);
+        boolean ok = (boolean) body.getOrDefault("success", false);
+        return new ResponseEntity<>(body, ok ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @GetMapping("/categoriasPreferencias")
+    public ResponseEntity<List<CategoriaPreferenciaBean>> obtenerCategoriasPreferencias() {
+
+        List<CategoriaPreferenciaBean> resultado =
+                ristorinoRepository.obtenerCategoriasPreferencias();
+        return ResponseEntity.ok(resultado);
+    }
+
+
+   /* @PostMapping("/obtenerCosto")
+    public ResponseEntity<Map<String, Object>> obtenerCosto(@RequestBody CostoBean req) {
+
+        if (req.getTipoCosto() == null || req.getFecha() == null) {
+            return ResponseEntity.badRequest().body(
+                    Map.of(
+                            "success", false,
+                            "message", "tipoCosto y fecha son obligatorios"
+                    )
+            );
+        }
+
+        try {
+            BigDecimal monto =
+                    ristorinoRepository.obtenerCostoVigente(
+                            req.getTipoCosto(),
+                            req.getFecha()
+                    );
+
+            return ResponseEntity.ok(
+                    Map.of(
+                            "success", true,
+                            "monto", monto
+                    )
+            );
+
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(
+                    Map.of(
+                            "success", false,
+                            "message", e.getMessage()
+                    )
+            );
+        }
+    }*/
+
+
+
+    @PostMapping("/evaluarReserva")
+    public ResponseEntity<ResponseBean> evaluarReserva(
+            @RequestBody EvaluarReservaReqBean req) {
+        ResponseBean resp =
+                evaluarReservaService.evaluarReserva(req);
+        
+        return resp.isSuccess()
+                ? ResponseEntity.ok(resp)
+                : ResponseEntity.badRequest().body(resp);
+    }
+
+  /*@GetMapping("/favoritos")
+    public ResponseEntity<List<String>> obtenerFavoritos(Authentication auth) {
+
+        String correo = auth.getName(); // sale del token JWT
+
+     // System.out.println("CORREO TOKEN >>> [" + correo + "]");
+
+        List<String> favoritos =
+                ristorinoRepository.obtenerFavoritos(correo);
+
+        return ResponseEntity.ok(favoritos);
+    }*/
+
+   @PostMapping("/favoritos/toggle")
+    public ResponseEntity<Map<String, Object>> toggleFavorito(
+            @RequestBody Map<String, String> body,
+            Authentication auth) {
+
+        String correo = auth.getName();
+
+        Map<String, Object> jsonMap = new HashMap<>();
+        jsonMap.put("correo", correo);
+        jsonMap.put("nroRestaurante", body.get("nroRestaurante"));
+
+        String json = new Gson().toJson(jsonMap);
+
+        Map<String, Object> resp =
+                ristorinoRepository.toggleFavorito(json);
+
+        return ResponseEntity.ok(resp);
+    }
+
+}

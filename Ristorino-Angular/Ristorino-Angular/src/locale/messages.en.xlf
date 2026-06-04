@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="breadcrumbLogin" datatype="html">
+        <source>Iniciar sesión</source>
+        <target state="final">Sign In</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumbRegister" datatype="html">
+        <source>Crear cuenta</source>
+        <target state="final">Create Account</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumbHome" datatype="html">
+        <source>Inicio</source>
+        <target state="final">Home</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/breadcrumb/breadcrumb.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumbRestaurant" datatype="html">
+        <source>Restaurante</source>
+        <target state="final">Restaurant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/breadcrumb/breadcrumb.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumbNewReservation" datatype="html">
+        <source>Nueva Reserva</source>
+        <target state="final">New Reservation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumbBranch" datatype="html">
+        <source>Sucursal</source>
+        <target state="final">Branch</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/breadcrumb/breadcrumb.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumbMyReservations" datatype="html">
+        <source>Mis Reservas</source>
+        <target state="final">My Reservations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1926157928707021468" datatype="html">
+        <source>Inicio</source>
+        <target state="final">Home</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3715871949679059190" datatype="html">
+        <source>Mis Reservas</source>
+        <target state="final">My Reservations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1294390259244223882" datatype="html">
+        <source>Cerrar sesión</source>
+        <target state="final">Sign Out</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4311569858228721961" datatype="html">
+        <source>Iniciar sesión</source>
+        <target state="final">Sign In</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirm-dialog-accept" datatype="html">
+        <source> Aceptar </source>
+        <target state="final"> Accept </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/confirm-dialog/confirm-dialog.html</context>
+          <context context-type="linenumber">21,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirm-dialog-cancel" datatype="html">
+        <source> Cancelar </source>
+        <target state="final"> Cancel </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/confirm-dialog/confirm-dialog.html</context>
+          <context context-type="linenumber">25,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-required-dialog-loginrequired" datatype="html">
+        <source>🔐 Iniciar sesión requerida</source>
+        <target state="final">🔐 Sign in required</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/login-required-dialog/login-required-dialog.html</context>
+          <context context-type="linenumber">1,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-required-dialog-message" datatype="html">
+        <source> Para poder confirmar una reserva es necesario <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>iniciar sesión<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. </source>
+        <target state="final"> To confirm a reservation you need to <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>sign in<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/login-required-dialog/login-required-dialog.html</context>
+          <context context-type="linenumber">5,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-required-dialog-cancel" datatype="html">
+        <source>Cancelar</source>
+        <target state="final">Cancel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/login-required-dialog/login-required-dialog.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-required-dialog-login" datatype="html">
+        <source> Iniciar sesión </source>
+        <target state="final"> Sign In </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/login-required-dialog/login-required-dialog.html</context>
+          <context context-type="linenumber">13,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="message-dialog-accept" datatype="html">
+        <source> Aceptar </source>
+        <target state="final"> Accept </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/message-dialog/message-dialog.html</context>
+          <context context-type="linenumber">30,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="modificarReservaTitulo" datatype="html">
+        <source>Modificar reserva #<x id="INTERPOLATION" equiv-text="{{ data?.item?.nroReserva }}"/></source>
+        <target state="final">Modify reservation #<x id="INTERPOLATION" equiv-text="{{ data?.item?.nroReserva }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">1,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="modificarReservaInstrucciones" datatype="html">
+        <source>Editá los datos, buscá horarios y confirmá.</source>
+        <target state="final">Edit the details, search for times, and confirm.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nuevaFechaLabel" datatype="html">
+        <source>Nueva Fecha</source>
+        <target state="final">New Date</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="zonaAmbienteLabel" datatype="html">
+        <source>Zona / Ambiente</source>
+        <target state="final">Zone / Area</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adultosLabel" datatype="html">
+        <source>Adultos</source>
+        <target state="final">Adults</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="menoresLabel" datatype="html">
+        <source>Menores</source>
+        <target state="final">Children</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="buscandoTexto" datatype="html">
+        <source>Buscando...</source>
+        <target state="final">Searching...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verHorariosTexto" datatype="html">
+        <source>Ver Horarios Disponibles</source>
+        <target state="final">View Available Times</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="turnosDisponiblesTitulo" datatype="html">
+        <source>Turnos disponibles:</source>
+        <target state="final">Available times:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">80,82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sinDisponibilidadTexto" datatype="html">
+        <source>No hay disponibilidad para esos criterios.</source>
+        <target state="final">No availability for those criteria.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">68,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenPaxTexto" datatype="html">
+        <source>👥 <x id="INTERPOLATION" equiv-text="{{ adultosNuevo }}"/> Adultos + <x id="INTERPOLATION_1" equiv-text="{{ menoresNuevo }}"/> Menores</source>
+        <target state="final">👥 <x id="INTERPOLATION" equiv-text="{{ adultosNuevo }}"/> Adults + <x id="INTERPOLATION_1" equiv-text="{{ menoresNuevo }}"/> Children</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">77,78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenCostoTexto" datatype="html">
+        <source>💰 Costo estimado: $<x id="INTERPOLATION" equiv-text="{{ costo }}"/></source>
+        <target state="final">💰 Estimated cost: $<x id="INTERPOLATION" equiv-text="{{ costo }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">78,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cerrarBoton" datatype="html">
+        <source>Cerrar</source>
+        <target state="final">Close</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">84,85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmarBoton" datatype="html">
+        <source> Confirmar </source>
+        <target state="final"> Confirm </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.html</context>
+          <context context-type="linenumber">89,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4109498287976092042" datatype="html">
+        <source>Error al consultar horarios.</source>
+        <target state="final">Error consulting times.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.ts</context>
+          <context context-type="linenumber">198</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2125113989298721896" datatype="html">
+        <source>Elegí una fecha</source>
+        <target state="final">Choose a date</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.ts</context>
+          <context context-type="linenumber">225</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1273801823996830205" datatype="html">
+        <source>Elegí un horario</source>
+        <target state="final">Choose a time</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layouts/modificar-reserva-dialog/modificar-reserva-dialog.ts</context>
+          <context context-type="linenumber">229</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="historialTitulo" datatype="html">
+        <source>Mis Reservas</source>
+        <target state="final">My Reservations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="historialSubtitulo" datatype="html">
+        <source>Consulta tus reservas realizadas en Ristorino</source>
+        <target state="final">Check your reservations made at Ristorino</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">5,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="filtroEstadoLabel" datatype="html">
+        <source>Estado</source>
+        <target state="final">Status</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="filtroFechaLabel" datatype="html">
+        <source>Fecha Desde</source>
+        <target state="final">Date From</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnFiltrar" datatype="html">
+        <source>FILTRAR</source>
+        <target state="final">FILTER</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnLimpiar" datatype="html">
+        <source>LIMPIAR</source>
+        <target state="final">CLEAR</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">31,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loadingTexto" datatype="html">
+        <source>Filtrando reservas...</source>
+        <target state="final">Filtering reservations...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">42,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emptyStateTexto" datatype="html">
+        <source>No se encontraron reservas.</source>
+        <target state="final">No reservations found.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="estadoSinEvaluar" datatype="html">
+        <source>SIN EVALUAR</source>
+        <target state="final">NOT RATED</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reservaNumeroPrefix" datatype="html">
+        <source>Reserva #</source>
+        <target state="final">Reservation #</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="detallesPax" datatype="html">
+        <source>👥 <x id="INTERPOLATION" equiv-text="{{ item.cantAdultos }}"/> Adultos, <x id="INTERPOLATION_1" equiv-text="{{ item.cantMenores }}"/> Menores</source>
+        <target state="final">👥 <x id="INTERPOLATION" equiv-text="{{ item.cantAdultos }}"/> Adults, <x id="INTERPOLATION_1" equiv-text="{{ item.cantMenores }}"/> Children</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">79,80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnModificar" datatype="html">
+        <source>Modificar</source>
+        <target state="final">Modify</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">89,90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnCancelar" datatype="html">
+        <source>Cancelar</source>
+        <target state="final">Cancel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reservaCanceladaLabel" datatype="html">
+        <source>Reserva cancelada</source>
+        <target state="final">Reservation cancelled</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">98,99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reservaEvaluadaLabel" datatype="html">
+        <source>Reserva evaluada</source>
+        <target state="final">Reservation rated</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">100,101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reservaFinalizadaLabel" datatype="html">
+        <source>Reserva finalizada (pendiente de evaluación)</source>
+        <target state="final">Reservation completed (pending rating)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.html</context>
+          <context context-type="linenumber">102,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3261612635716460525" datatype="html">
+        <source>Reserva modificada</source>
+        <target state="final">Reservation modified</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="963529441989925616" datatype="html">
+        <source>La reserva fue modificada correctamente.</source>
+        <target state="final">The reservation was modified successfully.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1519954996184640001" datatype="html">
+        <source>Error</source>
+        <target state="final">Error</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">218</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.ts</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">235</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1104437445927129299" datatype="html">
+        <source>No se pudo modificar la reserva.</source>
+        <target state="final">Could not modify the reservation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8361730065546755381" datatype="html">
+        <source>No se pudo refrescar el historial.</source>
+        <target state="final">Could not refresh the history.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">161</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1615394476284408425" datatype="html">
+        <source>No se pudo cancelar</source>
+        <target state="final">Could not cancel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">190</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4035982605713977672" datatype="html">
+        <source>No se pudo cancelar la reserva.</source>
+        <target state="final">Could not cancel the reservation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">191</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="375954302185946998" datatype="html">
+        <source>Reserva cancelada</source>
+        <target state="final">Reservation cancelled</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">211</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4286753060405441394" datatype="html">
+        <source>La reserva fue cancelada correctamente.</source>
+        <target state="final">The reservation was cancelled successfully.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">212</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1226859083872123761" datatype="html">
+        <source>Ocurrió un error al cancelar la reserva.</source>
+        <target state="final">An error occurred while cancelling the reservation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/historial/historial.ts</context>
+          <context context-type="linenumber">219</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bienvenidosTitulo" datatype="html">
+        <source>Bienvenidos</source>
+        <target state="final">Welcome</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="promocionesSubtitulo" datatype="html">
+        <source>Estas son nuestras promociones</source>
+        <target state="final">These are our promotions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="busquedaPlaceholder" datatype="html">
+        <source>Buscar promociones o restaurantes...</source>
+        <target state="final">Search for promotions or restaurants...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="descubriOpcionesTitulo" datatype="html">
+        <source>Sucursales</source>
+        <target state="final">Branches</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">152,155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="descubriOpcionesTitulo2" datatype="html">
+        <source>Restaurantes</source>
+        <target state="final">Restaurants</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">229,231</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="restauranteDestacadoLabel" datatype="html">
+        <source> Restaurante destacado </source>
+        <target state="final"> Featured restaurant </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">245,247</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verRestauranteLink" datatype="html">
+        <source> Ver restaurante → </source>
+        <target state="final"> View restaurant → </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.html</context>
+          <context context-type="linenumber">276,278</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4031780089553928761" datatype="html">
+        <source>Sin resultados</source>
+        <target state="final">No results</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3190956766383320997" datatype="html">
+        <source>Lo sentimos, no encontramos resultados para tu búsqueda.</source>
+        <target state="final">We're sorry, we couldn't find any results for your search.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.ts</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4525084200816089275" datatype="html">
+        <source>Ocurrió un error al realizar la búsqueda. Intentá nuevamente.</source>
+        <target state="final">An error occurred while searching. Please try again.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.ts</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginTitulo" datatype="html">
+        <source>Iniciar sesión</source>
+        <target state="final">Sign In</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginSubtitulo" datatype="html">
+        <source>Accedé a tu experiencia Ristorino</source>
+        <target state="final">Access your Ristorino experience</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="emailPlaceholder" datatype="html">
+        <source>Correo electrónico</source>
+        <target state="final">Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordPlaceholder" datatype="html">
+        <source>Contraseña</source>
+        <target state="final">Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginBtnEntrar" datatype="html">
+        <source> Entrar </source>
+        <target state="final"> Enter </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">25,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginNoTienesCuenta" datatype="html">
+        <source>¿No tenés cuenta?</source>
+        <target state="final">Don't have an account?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginLinkRegistrate" datatype="html">
+        <source>Registrate</source>
+        <target state="final">Sign Up</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">35,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9176394085363495446" datatype="html">
+        <source><x id="START_HEADING_LEVEL3" ctype="x-h3" equiv-text="&lt;h3&gt;"/>🏠<x id="CLOSE_HEADING_LEVEL3" ctype="x-h3" equiv-text="&lt;/h3&gt;"/></source>
+        <target state="final"><x id="START_HEADING_LEVEL3" ctype="x-h3" equiv-text="&lt;h3&gt;"/>🏠<x id="CLOSE_HEADING_LEVEL3" ctype="x-h3" equiv-text="&lt;/h3&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.html</context>
+          <context context-type="linenumber">38,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3528220921628039546" datatype="html">
+        <source>Usuario o contraseña incorrectos</source>
+        <target state="final">Incorrect username or password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/login/login.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registroTitulo" datatype="html">
+        <source>Crear cuenta</source>
+        <target state="final">Create account</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registroSubtitulo" datatype="html">
+        <source>Sumate a Ristorino</source>
+        <target state="final">Join Ristorino</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderApellido" datatype="html">
+        <source>Apellido</source>
+        <target state="final">Last Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderNombre" datatype="html">
+        <source>Nombre</source>
+        <target state="final">First Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderEmail" datatype="html">
+        <source>Correo electrónico</source>
+        <target state="final">Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderClave" datatype="html">
+        <source>Contraseña</source>
+        <target state="final">Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderTelefono" datatype="html">
+        <source>Teléfono</source>
+        <target state="final">Phone</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderLocalidad" datatype="html">
+        <source>Localidad</source>
+        <target state="final">City</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderProvincia" datatype="html">
+        <source>Provincia</source>
+        <target state="final">State/Province</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">75,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tituloPreferencias" datatype="html">
+        <source> Preferencias gastronómicas </source>
+        <target state="final"> Dining preferences </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">88,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholderObservaciones" datatype="html">
+        <source>Observaciones</source>
+        <target state="final">Notes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">136,137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnRegistrarse" datatype="html">
+        <source> Registrarse </source>
+        <target state="final"> Sign Up </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">144,147</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="linkIniciarSesion" datatype="html">
+        <source> Iniciar Sesión </source>
+        <target state="final"> Sign In </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.html</context>
+          <context context-type="linenumber">161,163</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9053328733783309279" datatype="html">
+        <source>Registrado, pero error al iniciar sesión</source>
+        <target state="final">Registered, but error signing in</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1321157940271678576" datatype="html">
+        <source>Error al registrar el cliente</source>
+        <target state="final">Error registering customer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/registro/registro.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="realizarReservaTitulo" datatype="html">
+        <source>Realizar Reserva</source>
+        <target state="final">Make Reservation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fechaReservaLabel" datatype="html">
+        <source>Fecha de Reserva</source>
+        <target state="final">Reservation Date</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="zonaGenericaPrefix" datatype="html">
+        <source>Zona #</source>
+        <target state="final">Zone #</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">36,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="abreviaturaPersonas" datatype="html">
+        <source>p.</source>
+        <target state="final">p.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="errorZonaRequerida" datatype="html">
+        <source>Debes elegir una zona</source>
+        <target state="final">You must choose a zone</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cantidadPersonasLabel" datatype="html">
+        <source>Cantidad de Personas</source>
+        <target state="final">Number of People</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnBuscando" datatype="html">
+        <source>Buscando...</source>
+        <target state="final">Searching...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">70,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnVerHorarios" datatype="html">
+        <source>Ver Horarios Disponibles</source>
+        <target state="final">View Available Times</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">72,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noHayMesasMsg" datatype="html">
+        <source>No hay mesas disponibles para los criterios seleccionados.</source>
+        <target state="final">No tables available for the selected criteria.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">94,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenReservaTitulo" datatype="html">
+        <source>Resumen de Reserva</source>
+        <target state="final">Reservation Summary</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">105,106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenHora" datatype="html">
+        <source>⏰ <x id="INTERPOLATION" equiv-text="{{ horaSeleccionada.horaReserva }}"/> hs</source>
+        <target state="final">⏰ <x id="INTERPOLATION" equiv-text="{{ horaSeleccionada.horaReserva }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">109,110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenAdultos" datatype="html">
+        <source>👥 <x id="INTERPOLATION" equiv-text="{{ reservaForm.get(&apos;cantAdultos&apos;)?.value }}"/> Adultos</source>
+        <target state="final">👥 <x id="INTERPOLATION" equiv-text="{{ reservaForm.get(&apos;cantAdultos&apos;)?.value }}"/> Adults</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">112,113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenNinosAddon" datatype="html">
+        <source> (+ Niños)</source>
+        <target state="final"> (+ Children)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">114,116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resumenCosto" datatype="html">
+        <source>💰 $<x id="INTERPOLATION" equiv-text="{{ costo | number }}"/></source>
+        <target state="final">💰 $<x id="INTERPOLATION" equiv-text="{{ costo | number }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">117,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnProcesando" datatype="html">
+        <source>Procesando...</source>
+        <target state="final">Processing...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">125,126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnConfirmarReserva" datatype="html">
+        <source>CONFIRMAR RESERVA ➜</source>
+        <target state="final">CONFIRM RESERVATION ➜</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.html</context>
+          <context context-type="linenumber">127,129</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2388354276433870982" datatype="html">
+        <source>No se pudieron cargar los datos del restaurante.</source>
+        <target state="final">Could not load restaurant data.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8783773257202930003" datatype="html">
+        <source>Sin disponibilidad</source>
+        <target state="final">No availability</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3762111428636771719" datatype="html">
+        <source>No hay horarios disponibles para la fecha y zona seleccionadas.</source>
+        <target state="final">No available times for the selected date and zone.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7839408369229022953" datatype="html">
+        <source>Error al consultar horarios disponibles.</source>
+        <target state="final">Error consulting available times.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8584296266469426694" datatype="html">
+        <source>Horario requerido</source>
+        <target state="final">Time required</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4452631934939636545" datatype="html">
+        <source>Debe seleccionar un horario para confirmar la reserva.</source>
+        <target state="final">You must select a time to confirm the reservation.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">184</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5643204242245879106" datatype="html">
+        <source>Reserva confirmada</source>
+        <target state="final">Reservation confirmed</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">220</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1373152003988480427" datatype="html">
+        <source>Tu reserva fue confirmada correctamente.
+Código: <x id="PH" equiv-text="codigo"/></source>
+        <target state="final">Your reservation was confirmed successfully.
+Code: <x id="PH" equiv-text="codigo"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">221</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4492627575237157573" datatype="html">
+        <source>Hubo un error al registrar la reserva. Verifique los datos.</source>
+        <target state="final">There was an error registering the reservation. Please verify the data.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reserva/reserva.ts</context>
+          <context context-type="linenumber">236</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sucursalBadgePrefix" datatype="html">
+        <source>Sucursal #</source>
+        <target state="final">Branch #</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="telefonoNoDisponible" datatype="html">
+        <source>No disponible</source>
+        <target state="final">Not available</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirmacionMinimaLabel" datatype="html">
+        <source>⏱️ Confirmación mínima:</source>
+        <target state="final">⏱️ Minimum confirmation:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="minutosAntesSuffix" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ s.minTolerenciaReserva }}"/> minutos antes</source>
+        <target state="final"><x id="INTERPOLATION" equiv-text="{{ s.minTolerenciaReserva }}"/> minutes before</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ambientesDisponiblesLabel" datatype="html">
+        <source>Ambientes disponibles</source>
+        <target state="final">Available areas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="abreviaturaMax" datatype="html">
+        <source>máx</source>
+        <target state="final">max</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">58,59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="promocionesDisponiblesTitulo" datatype="html">
+        <source>Promociones disponibles</source>
+        <target state="final">Available promotions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">89,90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btnHacerReserva" datatype="html">
+        <source> Hacer una Reserva ➜ </source>
+        <target state="final"> Make a Reservation ➜ </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">145,146</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noSucursalesMsg" datatype="html">
+        <source>No hay sucursales disponibles por el momento.</source>
+        <target state="final">No branches available at the moment.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">155,159</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cargandoRestauranteMsg" datatype="html">
+        <source>Cargando restaurante...</source>
+        <target state="final">Loading restaurant...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/restaurante/restaurante.html</context>
+          <context context-type="linenumber">161,162</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

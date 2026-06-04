@@ -1,0 +1,201 @@
+<section class="reserva-container">
+  <mat-card class="reserva-card">
+    <div class="card-header-custom">
+      <h2 i18n="@@realizarReservaTitulo">Realizar Reserva</h2>
+      @if (sucursal) {
+        <p class="muted">
+          <strong>{{ sucursal.nomSucursal || sucursal.nombre }}</strong
+          ><br />
+          {{ sucursal.calle }} {{ sucursal.nroCalle }}
+        </p>
+      }
+    </div>
+
+    <mat-card-content>
+      <form [formGroup]="reservaForm">
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label i18n="@@fechaReservaLabel">Fecha de Reserva</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fecha" [min]="minDate" />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label i18n="@@zonaAmbienteLabel">Zona / Ambiente</mat-label>
+
+            <mat-select formControlName="codZona">
+              @if (zonasDisponibles.length > 0) {
+                @for (z of zonasDisponibles; track z.codZona) {
+                  <mat-option [value]="z.codZona">
+                    @if (z.nomZona) {
+                      {{ z.nomZona }}
+                    } @else {
+                      <span i18n="@@zonaGenericaPrefix">Zona #</span>{{ z.codZona }}
+                    }
+                    <small
+                      >({{ z.cantComensales }} <span i18n="@@abreviaturaPersonas">p.</span>)</small
+                    >
+                  </mat-option>
+                }
+              }
+            </mat-select>
+
+            @if (reservaForm.get('codZona')?.hasError('required')) {
+              <mat-error i18n="@@errorZonaRequerida">Debes elegir una zona</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label i18n="@@cantidadPersonasLabel">Cantidad de Personas</mat-label>
+            <input matInput type="number" min="1" formControlName="cantAdultos" />
+            <mat-icon matSuffix>group</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label i18n="@@menoresLabel">Menores</mat-label>
+            <input matInput type="number" min="0" formControlName="cantMenores" />
+            <mat-icon matSuffix>child_care</mat-icon>
+          </mat-form-field>
+        </div>
+        <!-- esto es para la observacion de menores
+        @if (reservaForm.get('cantMenores')?.value > 0) {
+  <div class="form-row margin-top">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label i18n="@@obsLabel">Observaciones</mat-label>
+      <textarea matInput
+                formControlName="observaciones"
+                rows="3"
+                placeholder="Ej: Sillita para bebé, alergias, etc.">
+      </textarea>
+      <mat-icon matSuffix>note</mat-icon>
+
+      @if (reservaForm.get('observaciones')?.hasError('required')) {
+        <mat-error>Debe ingresar observaciones si hay menores.</mat-error>
+      }
+    </mat-form-field>
+  </div>
+}-->
+        <!--agregado para la observacion general
+      <div class="form-row margin-top">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label i18n="@@obsLabel">Observaciones (Opcional)</mat-label>
+          <textarea matInput formControlName="observaciones" rows="3" placeholder="Ej: Alergia a frutos secos, preferencias especiales, etc."></textarea>
+          <mat-icon matSuffix>note</mat-icon>
+        </mat-form-field>
+      </div>-->
+
+
+      <!-- esto est para agregar un selector de tipo de reserva
+      @if (esPremium) {por las dudas si lo hago con el premium, sino borrar
+      <div class="form-row margin-top">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label i18n="@@tipoReservaLabel">Tipo de Reserva</mat-label>
+
+    <mat-select formControlName="tipoReserva">
+      <mat-option value="NORMAL">
+        <span i18n="@@tipoNormal">Normal</span>
+      </mat-option>
+
+      <mat-option value="ALTA">
+        <span i18n="@@tipoAlta">Alta</span>
+      </mat-option>
+
+      <mat-option value="VIP">
+        <span i18n="@@tipoVip">VIP</span>
+      </mat-option>
+    </mat-select>
+
+    @if (reservaForm.get('tipoReserva')?.hasError('required')) {
+      <mat-error i18n="@@errorTipoReserva">
+        Debes seleccionar un tipo de reserva
+      </mat-error>
+    }
+  </mat-form-field>
+</div>-->
+        <div class="search-action">
+          <button
+            mat-flat-button
+            color="primary"
+            type="button"
+            class="btn-full"
+            [disabled]="reservaForm.invalid || loading"
+            (click)="buscarDisponibilidad()"
+          >
+            @if (loading) {
+              <span i18n="@@btnBuscando">Buscando...</span>
+            } @else {
+              <span i18n="@@btnVerHorarios">Ver Horarios Disponibles</span>
+            }
+          </button>
+        </div>
+      </form>
+
+      @if (busquedaRealizada) {
+        <div class="grid-container fade-in">
+          <h3 class="grid-title" i18n="@@turnosDisponiblesTitulo">
+            Turnos disponibles para esta fecha:
+          </h3>
+
+          <div class="horarios-grid">
+            @for (hora of horariosDisponibles; track $index) {
+              <button
+                class="hora-chip"
+                type="button"
+                [class.selected]="horaSeleccionada === hora"
+                (click)="seleccionarHorario(hora)"
+              >
+                {{ hora.horaReserva }}
+              </button>
+            }
+          </div>
+
+          @if (horariosDisponibles.length === 0) {
+            <p class="error-msg" i18n="@@noHayMesasMsg">
+              No hay mesas disponibles para los criterios seleccionados.
+            </p>
+          }
+        </div>
+      }
+    </mat-card-content>
+
+    @if (horaSeleccionada) {
+      <div class="card-footer-custom fade-in">
+        <div class="resumen-box">
+          <h4>
+            <mat-icon inline>receipt_long</mat-icon>
+            <span i18n="@@resumenReservaTitulo">Resumen de Reserva</span>
+          </h4>
+          <div class="resumen-details">
+            <span>📅 {{ reservaForm.get('fecha')?.value | date: 'dd/MM/yyyy' }}</span>
+
+            <span i18n="@@resumenHora">⏰ {{ horaSeleccionada.horaReserva }} hs</span>
+
+            <span>
+              <span i18n="@@resumenAdultos"
+                >👥 {{ reservaForm.get('cantAdultos')?.value }} Adultos</span
+              >
+              @if (reservaForm.get('cantMenores')?.value) {
+                <span i18n="@@resumenNinosAddon"> (+ Niños)</span>
+              }
+            </span>
+          </div>
+        </div>
+
+        <button
+          mat-flat-button
+          class="btn-confirm"
+          (click)="confirmarReserva()"
+          [disabled]="loading"
+        >
+          @if (loading) {
+            <span i18n="@@btnProcesando">Procesando...</span>
+          } @else {
+            <span i18n="@@btnConfirmarReserva">CONFIRMAR RESERVA ➜</span>
+          }
+        </button>
+      </div>
+    }
+  </mat-card>
+</section>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://services.restaurante2.das.ubp.edu.ar/" xmlns:tns="http://services.restaurante2.das.ubp.edu.ar/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="ConsultarDisponibilidadRequest" type="tns:ConsultarDisponibilidadRequest"/>
+
+  <xs:element name="ConsultarDisponibilidadResponse" type="tns:ConsultarDisponibilidadResponse"/>
+
+  <xs:element name="EvaluarReservaRequest" type="tns:EvaluarReservaRequest"/>
+
+  <xs:element name="EvaluarReservaResponse" type="tns:EvaluarReservaResponse"/>
+
+  <xs:element name="GetInfoRestauranteRequest" type="tns:GetInfoRestauranteRequest"/>
+
+  <xs:element name="GetInfoRestauranteResponse" type="tns:GetInfoRestauranteResponse"/>
+
+  <xs:element name="JsonProcessingException" type="tns:JsonProcessingException"/>
+
+  <xs:element name="ModificarReservaRequest" type="tns:ModificarReservaRequest"/>
+
+  <xs:element name="ModificarReservaResponse" type="tns:ModificarReservaResponse"/>
+
+  <xs:element name="cancelarReservaRequest" type="tns:cancelarReservaRequest"/>
+
+  <xs:element name="cancelarReservaResponse" type="tns:cancelarReservaResponse"/>
+
+  <xs:element name="confirmarReservaRequest" type="tns:confirmarReservaRequest"/>
+
+  <xs:element name="confirmarReservaResponse" type="tns:confirmarReservaResponse"/>
+
+  <xs:element name="notificarRestauranteRequest" type="tns:notificarRestauranteRequest"/>
+
+  <xs:element name="notificarRestauranteResponse" type="tns:notificarRestauranteResponse"/>
+
+  <xs:element name="obtenerPromocionesRequest" type="tns:obtenerPromocionesRequest"/>
+
+  <xs:element name="obtenerPromocionesResponse" type="tns:obtenerPromocionesResponse"/>
+
+  <xs:element name="registrarClicksRequest" type="tns:registrarClicksRequest"/>
+
+  <xs:element name="registrarClicksResponse" type="tns:registrarClicksResponse"/>
+
+  <xs:complexType name="obtenerPromocionesRequest">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerPromocionesResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registrarClicksRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registrarClicksResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EvaluarReservaRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EvaluarReservaResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ConsultarDisponibilidadRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ConsultarDisponibilidadResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="confirmarReservaRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="confirmarReservaResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="notificarRestauranteRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="notificarRestauranteResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetInfoRestauranteRequest">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="GetInfoRestauranteResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" form="qualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="JsonProcessingException">
+    <xs:sequence>
+      <xs:element name="location" type="tns:jsonLocation" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalMessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="processor" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jsonLocation">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="cancelarReservaRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cancelarReservaResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModificarReservaRequest">
+    <xs:sequence>
+      <xs:element name="jsonRequest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModificarReservaResponse">
+    <xs:sequence>
+      <xs:element name="jsonResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

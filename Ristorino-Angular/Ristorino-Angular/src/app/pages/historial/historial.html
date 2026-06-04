@@ -1,0 +1,306 @@
+<section class="historial-container">
+  <div class="header">
+    <h1 i18n="@@historialTitulo">Mis Reservas</h1>
+    <p i18n="@@historialSubtitulo">Consulta tus reservas realizadas en Ristorino</p>
+  </div>
+
+  <mat-card class="filtros-card">
+    <div class="filtros-grid">
+      <mat-form-field appearance="outline">
+        <mat-label i18n="@@filtroEstadoLabel">Estado</mat-label>
+        <mat-select [(ngModel)]="filtroEstado">
+          <mat-option value="">Seleccionar</mat-option>
+          @for (e of estados; track e.codEstado) {
+            <mat-option [value]="e.codEstado">{{ e.nomEstado }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label i18n="@@filtroFechaLabel">Fecha Desde</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="filtroFecha" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-flat-button color="primary" (click)="buscar()" i18n="@@btnFiltrar">
+          FILTRAR
+        </button>
+        <button mat-stroked-button (click)="limpiarFiltros()" i18n="@@btnLimpiar">LIMPIAR</button>
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="lista-items">
+    @if (loading) {
+      <div class="empty-state">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p i18n="@@loadingTexto">Filtrando reservas...</p>
+      </div>
+    } @else if (itemsMostrados.length === 0) {
+      <div class="empty-state">
+        <mat-icon>event_busy</mat-icon>
+        <p i18n="@@emptyStateTexto">No se encontraron reservas.</p>
+      </div>
+    } @else {
+      @for (item of itemsMostrados; track item.nroReserva) {
+        <mat-card class="item-card" [class.cancelled]="item.codEstado == 2">
+          <div class="card-content">
+            <div class="icon-box">
+              <mat-icon>event_seat</mat-icon>
+            </div>
+
+            <div class="info-box">
+              <div class="top-row">
+                <h3>{{ item.nombreRestaurante }}</h3>
+
+                <span class="badge" [attr.data-status]="item.nomEstado">
+                  @if (item.codEstado == 4) {
+                    <span i18n="@@estadoSinEvaluar">SIN EVALUAR</span>
+                  } @else {
+                    {{ item.nomEstado }}
+                  }
+                </span>
+              </div>
+
+              <div class="details-row">
+                <span>📌 {{ item.nombreRestaurante }} - {{ item.nombreSucursal }}</span>
+                <span
+                  >📍 <span i18n="@@reservaNumeroPrefix">Reserva #</span>{{ item.nroReserva }}</span
+                >
+
+                <span
+                  >📅 {{ item.fechaReserva | date: 'dd/MM/yyyy' }} - ⏰ {{ item.horaReserva }}</span
+                >
+
+                <span i18n="@@detallesPax"
+                  >👥 {{ item.cantAdultos }} Adultos, {{ item.cantMenores }} Menores</span
+                >
+
+                @if (item.costoReserva > 0) {
+                  <span class="price">💰 ${{ item.costoReserva | number }}</span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!--<div class="card-actions">
+            @if (esPendiente(item)) {
+              <button mat-stroked-button color="primary" (click)="modificarReserva(item)">
+                <mat-icon>edit</mat-icon>
+                <span i18n="@@btnModificar">Modificar</span>
+              </button>
+
+              <button mat-stroked-button color="warn" (click)="cancelar(item)">
+                <mat-icon>cancel</mat-icon>
+                <span i18n="@@btnCancelar">Cancelar</span>
+              </button>
+            }@else if (item.codEstado == 3) {
+              <!-- BOTÓN FEEDBACK 
+              <button mat-stroked-button color="primary" (click)="toggleFeedback(item)">
+                <mat-icon>rate_review</mat-icon>
+                <span i18n="@@btnFeedback">Feedback</span>
+              </button>
+
+              <!-- PANEL FEEDBACK 
+              @if (feedbackAbierto === item.nroReserva) {
+                <div class="feedback-panel">
+                  <!-- COMENTARIO 
+                  <mat-form-field appearance="outline" class="full-width comentario-field">
+                    <mat-label i18n="@@comentarioLabel">Comentario</mat-label>
+
+                    <textarea
+                      matInput
+                      rows="4"
+                      maxlength="300"
+                      placeholder="Contanos tu experiencia..."
+                      [(ngModel)]="comentarios[item.nroReserva]"
+                    >
+                    </textarea>
+
+                    <mat-hint align="end">
+                      {{ comentarios[item.nroReserva]?.length || 0 }}/300
+                    </mat-hint>
+                  </mat-form-field>
+
+                  <!-- ESTRELLAS 
+                  <div class="rating-box">
+                    <span i18n="@@evaluarLabel">Puntuación:</span>
+
+                    @for (n of [1, 2, 3, 4, 5]; track n) {
+                      <button
+                        mat-icon-button
+                        (click)="seleccionarPuntuacion(item, n)"
+                        [color]="puntuaciones[item.nroReserva] >= n ? 'primary' : ''"
+                      >
+                        <mat-icon>
+                          {{ puntuaciones[item.nroReserva] >= n ? 'star' : 'star_border' }}
+                        </mat-icon>
+                      </button>
+                    }
+                  </div>
+
+                  <!-- ENVIAR 
+                  <button mat-flat-button color="primary" (click)="enviarFeedback(item)">
+                    <mat-icon>send</mat-icon>
+                    <span i18n="@@btnEnviarFeedback">Enviar</span>
+                  </button>
+                </div>
+              }
+            } @else {
+              <span class="muted-text">
+                @if (item.codEstado == 2) {
+                  <span i18n="@@reservaCanceladaLabel">Reserva cancelada</span>
+                } @else if (item.codEstado == 4) {
+                  <span i18n="@@reservaEvaluadaLabel">Reserva evaluada</span>
+                } @else {
+                  <span i18n="@@reservaFinalizadaLabel"> Reserva finalizada </span>
+                }
+              </span>
+            }
+          </div>-->
+
+          <div class="card-actions">
+
+  <!-- 🔹 RESERVA PENDIENTE -->
+  @if (esPendiente(item)) {
+    <!--para la reconfirmacion de reserva
+    <button mat-stroked-button color="primary"
+          (click)="reconfirmar(item)"
+          [disabled]="reconfirmadas[item.nroReserva] || loading">
+
+    <mat-icon>check_circle</mat-icon>
+
+    @if (reconfirmadas[item.nroReserva]) {
+      <span>Reconfirmada</span>
+    } @else {
+      <span>Reconfirmar</span>
+    }
+   </button>-->
+
+    <button mat-stroked-button color="primary" (click)="modificarReserva(item)">
+      <mat-icon>edit</mat-icon>
+      <span i18n="@@btnModificar">Modificar</span>
+    </button>
+
+    <button mat-stroked-button color="warn" (click)="cancelar(item)">
+      <mat-icon>cancel</mat-icon>
+      <span i18n="@@btnCancelar">Cancelar</span>
+    </button>
+
+  }
+
+  <!-- 🔹 SIN EVALUAR -->
+  @else if (item.codEstado == 3 && !item.puntuacion) {
+
+    <button mat-stroked-button color="primary" (click)="toggleFeedback(item)">
+      <mat-icon>rate_review</mat-icon>
+      <span i18n="@@btnFeedback">Feedback</span>
+    </button>
+
+    @if (feedbackAbierto === item.nroReserva) {
+
+      <div class="feedback-panel">
+
+        <!-- COMENTARIO -->
+        <mat-form-field appearance="outline" class="full-width comentario-field">
+          <mat-label i18n="@@comentarioLabel">Comentario</mat-label>
+
+          <textarea
+            matInput
+            rows="4"
+            maxlength="300"
+            placeholder="Contanos tu experiencia..."
+            [(ngModel)]="comentarios[item.nroReserva]">
+          </textarea>
+
+          <mat-hint align="end">
+            {{ comentarios[item.nroReserva]?.length || 0 }}/300
+          </mat-hint>
+        </mat-form-field>
+
+        <!-- ESTRELLAS -->
+        <div class="rating-box">
+          <span i18n="@@evaluarLabel">Puntuación:</span>
+
+          @for (n of [1,2,3,4,5]; track n) {
+            <button
+              mat-icon-button
+              (click)="seleccionarPuntuacion(item, n)"
+              [color]="puntuaciones[item.nroReserva] >= n ? 'primary' : ''">
+
+              <mat-icon>
+                {{ puntuaciones[item.nroReserva] >= n ? 'star' : 'star_border' }}
+              </mat-icon>
+
+            </button>
+          }
+        </div>
+
+        <!-- ENVIAR -->
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="enviarFeedback(item)"
+          [disabled]="loading">
+
+          <mat-icon>send</mat-icon>
+          <span i18n="@@btnEnviarFeedback">Enviar</span>
+
+        </button>
+
+      </div>
+    }
+  }
+
+  <!-- 🔹 EVALUADA -->
+  @else if (item.codEstado == 4 && item.puntuacion) {
+
+    <div class="feedback-mostrado">
+
+      <!-- ESTRELLAS FIJAS -->
+      <div class="estrellas-fijas">
+        @for (n of [1,2,3,4,5]; track n) {
+          <mat-icon color="primary">
+            {{ item.puntuacion >= n ? 'star' : 'star_border' }}
+          </mat-icon>
+        }
+      </div>
+
+      <!-- COMENTARIO -->
+      @if (item.feedback) {
+        <p class="comentario-mostrado">
+          "{{ item.feedback }}"
+        </p>
+      }
+
+    </div>
+
+  }
+
+  <!-- 🔹 OTROS ESTADOS -->
+  @else {
+
+    <span class="muted-text">
+
+      @if (item.codEstado == 2) {
+        <span i18n="@@reservaCanceladaLabel">Reserva cancelada</span>
+      } @else {
+        <span i18n="@@reservaFinalizadaLabel">Reserva finalizada</span>
+      }
+
+    </span>
+
+  }
+
+</div>
+        </mat-card>
+      }
+    }
+  </div>
+</section>
+
+
+
+

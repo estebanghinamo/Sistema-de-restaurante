@@ -1,0 +1,44 @@
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <h2 class="auth-title" i18n="@@loginTitulo">Iniciar sesión</h2>
+    <p class="auth-subtitle" i18n="@@loginSubtitulo">Accedé a tu experiencia Ristorino</p>
+
+    <form (ngSubmit)="login()" #f="ngForm">
+
+      <input type="email"
+             name="correo"
+             [(ngModel)]="correo"
+             placeholder="Correo electrónico"
+             i18n-placeholder="@@emailPlaceholder"
+             required />
+
+      <input type="password"
+             name="clave"
+             [(ngModel)]="clave"
+             placeholder="Contraseña"
+             i18n-placeholder="@@passwordPlaceholder"
+             required />
+
+      <button type="submit" [disabled]="f.invalid" i18n="@@loginBtnEntrar">
+        Entrar
+      </button>
+
+      @if (error) {
+        <p style="color:red">{{ error }}</p>
+      }
+
+      <div class="auth-footer">
+        <span i18n="@@loginNoTienesCuenta">¿No tenés cuenta?</span>
+        &nbsp;
+        <a routerLink="/registro" i18n="@@loginLinkRegistrate">Registrate</a>
+      </div>
+       <div class="auth-footer">
+        <a routerLink="/main" i18n=""><h3>🏠</h3></a>
+      </div>
+
+    </form>
+
+  </div>
+</div>

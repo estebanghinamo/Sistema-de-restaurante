@@ -1,0 +1,30 @@
+.message-modal {
+  text-align: center;
+  padding: 24px 20px;
+
+  .icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+
+    &.warning {
+      color: #ed6c02;
+    }
+  }
+
+  .modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .modal-text {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 22px;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: center;
+  }
+}

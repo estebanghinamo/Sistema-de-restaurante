@@ -1,0 +1,90 @@
+<h2 mat-dialog-title i18n="@@modificarReservaTitulo">Modificar reserva #{{ data?.item?.nroReserva }}</h2>
+
+<mat-dialog-content>
+  <p i18n="@@modificarReservaInstrucciones">Editá los datos, buscá horarios y confirmá.</p>
+
+  <mat-form-field appearance="outline" style="width:100%; margin-top:10px;">
+    <mat-label i18n="@@nuevaFechaLabel">Nueva Fecha</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNueva" (ngModelChange)="onCriteriosChange()" [min]="minDate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width:100%;">
+    <mat-label i18n="@@zonaAmbienteLabel">Zona / Ambiente</mat-label>
+    <mat-select [(ngModel)]="codZonaNuevo" (selectionChange)="onCriteriosChange()">
+      @for (z of zonasDisponibles; track z.codZona) {
+        @if (z?.habilitada !== false) {
+          <mat-option [value]="z.codZona">{{ z.nomZona }}</mat-option>
+        }
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div style="display:flex; gap:12px;">
+    <mat-form-field appearance="outline" style="width:100%;">
+      <mat-label i18n="@@adultosLabel">Adultos</mat-label>
+      <input matInput type="number" min="1" [(ngModel)]="adultosNuevo" (ngModelChange)="onCriteriosChange()">
+      <mat-icon matSuffix>group</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width:100%;">
+      <mat-label i18n="@@menoresLabel">Menores</mat-label>
+      <input matInput type="number" min="0" [(ngModel)]="menoresNuevo" (ngModelChange)="onCriteriosChange()">
+      <mat-icon matSuffix>child_care</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div style="margin-top: 8px;">
+    <button mat-flat-button color="primary"
+            type="button"
+            style="width:100%;"
+            [disabled]="!puedeBuscarHorarios || loadingHorarios"
+            (click)="buscarDisponibilidad()">
+      @if (loadingHorarios) {
+        <span i18n="@@buscandoTexto">Buscando...</span>
+      } @else {
+        <span i18n="@@verHorariosTexto">Ver Horarios Disponibles</span>
+      }
+    </button>
+  </div>
+
+  @if (busquedaRealizada) {
+    <div style="margin-top:14px;">
+      <h3 style="margin:0 0 10px;" i18n="@@turnosDisponiblesTitulo">Turnos disponibles:</h3>
+
+      @if (horariosDisponibles.length > 0) {
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          @for (h of horariosDisponibles; track $index) {
+            <button mat-stroked-button
+                    type="button"
+                    [color]="horaSeleccionada === h ? 'primary' : undefined"
+                    (click)="seleccionarHorario(h)">
+              {{ h.horaReserva }}
+            </button>
+          }
+        </div>
+      } @else {
+        <p style="margin-top:8px;" i18n="@@sinDisponibilidadTexto">No hay disponibilidad para esos criterios.</p>
+      }
+    </div>
+  }
+
+  @if (horaSeleccionada) {
+    <div style="margin-top:14px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12);">
+      <div>📅 {{ fechaNueva | date:'dd/MM/yyyy' }}</div>
+      <div>⏰ {{ horaSeleccionada.horaReserva }}</div>
+      <div i18n="@@resumenPaxTexto">👥 {{ adultosNuevo }} Adultos + {{ menoresNuevo }} Menores</div>
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()" i18n="@@cerrarBoton">Cerrar</button>
+  <button mat-flat-button color="primary"
+          (click)="ok()"
+          [disabled]="!puedeConfirmar"
+          i18n="@@confirmarBoton">
+    Confirmar
+  </button>
+</mat-dialog-actions>

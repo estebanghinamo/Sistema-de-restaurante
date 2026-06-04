@@ -1,0 +1,260 @@
+<section class="terracotta-page">
+  <div class="home-header">
+    <h1 class="welcome-text" i18n="@@bienvenidosTitulo">Bienvenidos</h1>
+    <p class="subtitle" i18n="@@promocionesSubtitulo">Estas son nuestras promociones</p>
+
+    <div class="search-bar">
+      <form (ngSubmit)="buscar()" class="search-box">
+        <textarea
+          [(ngModel)]="textoBusqueda"
+          name="texto"
+          placeholder="Buscar promociones o restaurantes..."
+          i18n-placeholder="@@busquedaPlaceholder"
+          rows="1"
+          (keydown.enter)="buscar(); $event.preventDefault()"
+        ></textarea>
+
+        <button type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  @if ((promociones && promociones.length > 0) || (busquedaEjecutada && resultados.length > 0)) {
+    <div id="promoCarousel" class="carousel slide theme-terracotta" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <ng-container *ngIf="!busquedaEjecutada || resultados.length === 0">
+          @for (promo of promociones; track $index) {
+            <button
+              type="button"
+              data-bs-target="#promoCarousel"
+              [attr.data-bs-slide-to]="$index"
+              [class.active]="$index === 0"
+            ></button>
+          }
+        </ng-container>
+
+        <ng-container *ngIf="busquedaEjecutada && resultados.length > 0">
+          @for (r of resultados; track $index) {
+            <button
+              type="button"
+              data-bs-target="#promoCarousel"
+              [attr.data-bs-slide-to]="$index"
+              [class.active]="$index === 0"
+            ></button>
+          }
+        </ng-container>
+      </div>
+
+      <div class="carousel-inner rounded-4 shadow-lg">
+        <!-- ===== PROMOCIONES ===== -->
+        <ng-container *ngIf="!busquedaEjecutada || resultados.length === 0">
+          @for (promo of promociones; track $index) {
+            <div class="carousel-item" [class.active]="$index === 0">
+              <img [src]="promo.imagenPromocional" class="d-block w-100 carousel-img" />
+              <div class="carousel-caption d-none d-md-block caption-blur">
+                <div class="promo-content">
+                  <!--@if(promo.proposito) {
+                  <span class="promo-badge" [style.backgroundColor]="getColorParaBadge($index).bg" [style.color]="getColorParaBadge($index).text">
+                    {{ promo.proposito }}
+                  </span>
+                  }-->
+                  <a
+                    class="fw-bold fs-4 text-decoration-none text-white promo-link"
+                    [routerLink]="['/main/restaurante', promo.nroRestaurante, promo.nroSucursal]"
+                    (click)="registrarClick(promo)"
+                  >
+                    {{ promo.contenidoPromocional }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </ng-container>
+
+        <!-- ===== RESULTADOS IA ===== -->
+        <ng-container *ngIf="busquedaEjecutada && resultados.length > 0">
+          @for (r of resultados; track $index) {
+            <div class="carousel-item" [class.active]="$index === 0">
+              <div class="ia-slide">
+                <div class="ia-slide-content">
+                  <h2 class="ia-resto-title">{{ r.razon_social }}</h2>
+                  <p class="ia-resto-sub">{{ r.nom_sucursal }} · {{ r.desc_zona }}</p>
+                  <div class="ia-meta">
+                    <span>📍 {{ r.nom_localidad }}, {{ r.nom_provincia }}</span>
+                    <span>⏰ {{ r.hora_desde }} – {{ r.hora_hasta }}</span>
+                  </div>
+                  <a
+                    class="ia-cta"
+                    [routerLink]="['/main/restaurante', r.nro_restaurante, r.nro_sucursal]"
+                  >
+                    Ver restaurante →
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </ng-container>
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#promoCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#promoCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  }
+
+  <!-- =========================
+     DESCUBRÍ ESTAS OPCIONES
+========================== -->
+  <section class="home-sucursales">
+    <div class="section-header">
+      <h2 i18n="@@descubriOpcionesTitulo">Sucursales</h2>
+    </div>
+
+    <div class="carousel-wrapper" #carouselWrapper>
+      <div
+        class="carousel-track"
+        #carouselTrack
+        [style.transform]="'translateX(-' + translateX + 'px)'"
+      >
+        @for (item of sucursalesHome; track item.sucursal.nroSucursal) {
+          <article
+            class="sucursal-card-horizontal"
+            [routerLink]="['/main/restaurante', item.nroRestaurante, item.sucursal.nroSucursal]"
+          >
+            <div class="card-img">
+              <!-- placeholder visual -->
+              <span class="img-letter">
+                {{ item.razonSocial.charAt(0) }}
+              </span>
+            </div>
+
+            <div class="card-body">
+              <h3 class="sucursal-title">
+                {{ item.razonSocial }}
+              </h3>
+
+              <p class="sucursal-sub">
+                {{ item.sucursal.nomSucursal }}
+              </p>
+
+              <div class="sucursal-meta">
+                <span>📍 {{ item.sucursal.barrio }}</span>
+              </div>
+
+              <!--
+          SI SE QUIERE AGREGAR LAS CATEGORIAS
+        @if (item.sucursal.preferencias) {
+
+          <div class="sucursal-preferencias">
+
+            @for (cat of getPreferenciasEntries(item.sucursal.preferencias); track cat[0]) {
+
+              <div class="pref-group">
+                <span class="pref-title">
+                  {{ cat[0] }}
+                </span>
+
+                <div class="pref-tags">
+                  @for (v of cat[1]; track v) {
+                    <span class="tag tag-soft">
+                      {{ v }}
+                    </span>
+                  }
+                </div>
+              </div>
+
+            }
+
+          </div>
+        }-->
+            </div>
+          </article>
+        }
+      </div>
+
+      <!-- Indicadores -->
+      <div class="carousel-dots">
+        @for (item of sucursalesHome; track $index) {
+          <span class="dot" [class.active]="$index === currentIndex" (click)="goTo($index)"></span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="section-header">
+    <h2 i18n="@@descubriOpcionesTitulo2">Restaurantes</h2>
+  </div>
+
+  <section class="home-restos">
+    @for (r of restaurantes; track r.nroRestaurante) {
+      <article class="resto-home-card">
+        <header class="resto-header">
+          <div class="resto-logo">
+            {{ r.razonSocial.charAt(0) }}
+          </div>
+
+          <div class="resto-title">
+            <h3>{{ r.razonSocial }}</h3>
+            <div class="resto-rating">
+              @for (star of [1, 2, 3, 4, 5]; track star) {
+                <span class="star" [class.filled]="star <= r.promedioValoracion"> ★ </span>
+              }
+              <span class="rating-number">
+                {{ r.promedioValoracion | number: '1.1-1' }}
+              </span>
+            </div>
+          </div>
+
+          @if (estaLogueado) {
+            <div class="favorito-icon" (click)="toggleFavorito(r.nroRestaurante, $event)">
+              <i class="bi" [ngClass]="r.esFavorito ? 'bi-heart-fill text-danger' : 'bi-heart'">
+              </i>
+            </div>
+          }
+        </header>
+        <div class="resto-rating">Ranking en reservas: #{{ r.rankingReservas }}</div>
+        <!--<div class="resto-rating">{{ r.destacado }}</div>-->
+        <section class="resto-categories">
+          @for (cat of r.categorias | keyvalue; track cat.key) {
+            <div class="categoria-block">
+              <span class="categoria-title">
+                {{ cat.key }}
+              </span>
+
+              <div class="categoria-tags">
+                @for (v of cat.value; track v) {
+                  <span class="tag">{{ v }}</span>
+                }
+              </div>
+            </div>
+          }
+        </section>
+
+        <footer class="resto-footer">
+          <a
+            class="btn-ver-resto"
+            [routerLink]="['/main/restaurante', r.nroRestaurante]"
+            i18n="@@verRestauranteLink"
+          >
+            Ver restaurante →
+          </a>
+        </footer>
+      </article>
+    }
+  </section>
+</section>
